@@ -1,0 +1,803 @@
+/* ==========================================
+   1. المتغيرات العامة والألوان الرئيسية
+   ========================================== */
+
+/* الوضع الداكن (الافتراضي) */
+:root {
+  --bg-dark: #120A05;
+  --bg-card: rgba(24, 13, 7, 0.85);
+  --bg-navbar: rgba(18, 10, 5, 0.9);
+  --accent-copper: #E07A28;
+  --accent-gold: #FFD700;
+  --text-primary: #F8F5F0;
+  --text-secondary: #A09589;
+  --border-light: rgba(224, 122, 40, 0.25);
+  --shadow-color: rgba(0, 0, 0, 0.6);
+}
+
+/* الوضع النهاري الملكي (Light Theme) */
+[data-theme='light'] {
+  --bg-dark: #FAF6F0;
+  --bg-card: #FFFFFF;
+  --bg-navbar: rgba(250, 246, 240, 0.95);
+  --accent-copper: #E07A28;
+  --accent-gold: #D16A1B;
+  --text-primary: #120A05;
+  --text-secondary: #3D2B20;
+  --border-light: rgba(224, 122, 40, 0.25);
+  --shadow-color: rgba(18, 10, 5, 0.08);
+}
+/* النص داخل زر المنيو للوضع الداكن والنهاري */
+.mobile-menu-btn .menu-text-label,
+.light-theme .mobile-menu-btn .menu-text-label,
+[data-theme="light"] .mobile-menu-btn .menu-text-label {
+  color: #E07A28 !important;
+  font-weight: bold !important;
+  font-size: 15px !important;
+  background: transparent !important;
+
+}
+/* ==========================================
+   2.الصفحة الجانبية بقياس  الموبايل
+   ========================================== */
+@media (max-width: 480px){
+  .cart-modal-overlay{
+    padding: 0px 5px;
+  }
+  .cart-modal-overlay h2{
+    font-size: 20px;
+  }
+  .cart-modal-overlay h4{
+    font-size: 13px;
+  }
+  .cart-modal-overlay .cart-item-controls{
+    padding: 5px;
+    background-color:#E07A28;
+  }
+  .cart-total strong{
+    color:crimson;
+  }
+}
+/* ==========================================
+   2. التنسيقات الأساسية والجسم العام
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   3. تطبيق الخلفية المزخرفة في الوضع النهاري
+   ========================================== */
+
+html[data-theme='light'],
+[data-theme='light'] body,
+[data-theme='light'] #root,
+[data-theme='light'] section,
+[data-theme='light'] .products-section,
+[data-theme='light'] .about-section,
+[data-theme='light'] .menu-page,
+[data-theme='light'] .contact-page,
+[data-theme='light'] .contact-container {
+  background-color: #FAF6F0 !important;
+  /* زخرفة أرابيسك ملكية دقيقة وناعمة */
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d16a1b' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M30 30L15 0H0v15l30 30 30-30V0H45L30 30zM0 45v15h15l15-15L15 30 0 45zm60 0L45 30 30 45l15 15h15V45z'/%3E%3C/g%3E%3C/svg%3E") !important;
+  background-repeat: repeat !important;
+  background-attachment: fixed !important;
+  color: #120A05 !important;
+}
+
+/* ==========================================
+   4. تحويل جميع الكلمات والمحيط بالنص إلى الأسود
+   ========================================== */
+
+[data-theme='light'] body,
+[data-theme='light'] p,
+[data-theme='light'] span,
+[data-theme='light'] a,
+[data-theme='light'] label,
+[data-theme='light'] button,
+[data-theme='light'] li,
+[data-theme='light'] div,
+[data-theme='light'] .dish-desc,
+[data-theme='light'] .card-desc,
+[data-theme='light'] .product-desc,
+[data-theme='light'] .products-subtitle,
+[data-theme='light'] .dish-price,
+[data-theme='light'] .contact-info,
+[data-theme='light'] .info-desc {
+  color: #120A05 !important;
+}
+
+/* ==========================================
+   5. عناوين الأصناف والموقع بالأسود المتوهج بالبرتقالي (لون اللوغو)
+   ========================================== */
+
+[data-theme='light'] h1,
+[data-theme='light'] h2,
+[data-theme='light'] h3,
+[data-theme='light'] h4,
+[data-theme='light'] .products-title,
+[data-theme='light'] .hero-title,
+[data-theme='light'] .section-title,
+[data-theme='light'] .card-title,
+[data-theme='light'] .dish-title,
+[data-theme='light'] .product-title,
+[data-theme='light'] .category-title,
+[data-theme='light'] .product-card .card-title,
+[data-theme='light'] .dish-card h3 {
+  color: #120A05 !important;
+  font-weight: 800 !important;
+  /* توهج ضياء برتقالي نحاسي مستوحى من لون اللوغو */
+  text-shadow: 
+    0 0 3px #E07A28,
+    0 0 8px rgba(224, 122, 40, 0.6),
+    0 0 15px rgba(209, 106, 27, 0.3) !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  z-index: 5;
+}
+
+/* زيادة التوهج البرتقالي عند تمرير الماوس (Hover) */
+[data-theme='light'] .product-card:hover .card-title,
+[data-theme='light'] .dish-card:hover .dish-title,
+[data-theme='light'] .dish-card:hover h3 {
+  color: #000000 !important;
+  text-shadow: 
+    0 0 5px #E07A28,
+    0 0 12px #D16A1B,
+    0 0 22px rgba(224, 122, 40, 0.8) !important;
+}
+
+/* ==========================================
+   6. حذف الطبقات والتدرجات السوداء نهائياً (عادي + هوفر)
+   ========================================== */
+
+/* إخفاء كلي للطبقات المتراكبة السوداء في الأصناف الستة وكافة البطاقات */
+[data-theme='light'] .card-overlay,
+[data-theme='light'] .hero-overlay,
+[data-theme='light'] .dish-card::after,
+[data-theme='light'] .product-card::after,
+[data-theme='light'] .about-image-overlay,
+[data-theme='light'] .menu-card-overlay,
+[data-theme='light'] .dish-overlay,
+[data-theme='light'] .category-overlay {
+  background: transparent !important;
+  background-image: none !important;
+  opacity: 0 !important;
+}
+
+/* إلغاء الطبقة السوداء عند تمرير الماوس (Hover) */
+[data-theme='light'] .product-card:hover .card-overlay,
+[data-theme='light'] .dish-card:hover::after,
+[data-theme='light'] .product-card:hover::after,
+[data-theme='light'] .dish-card:hover .dish-overlay {
+  background: transparent !important;
+  background-image: none !important;
+  opacity: 0 !important;
+}
+
+/* خلفية عاجية شفافة ونظيفة لمحتوى الكارت لتوضيح النصوص مع إبراز الصور */
+[data-theme='light'] .product-card .card-content {
+  background: linear-gradient(to top, rgba(250, 246, 240, 0.95) 60%, rgba(250, 246, 240, 0.4) 90%, transparent 100%) !important;
+  border-radius: 0 0 16px 16px;
+  width: 100%;
+}
+
+/* إظهار الصور بسطوع ونقاء تام */
+[data-theme='light'] img,
+[data-theme='light'] .card-bg,
+[data-theme='light'] .dish-card img,
+[data-theme='light'] .product-card img,
+[data-theme='light'] .about-img {
+  filter: brightness(1) contrast(1.02) !important;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+[data-theme='light'] .product-card:hover .card-bg,
+[data-theme='light'] .dish-card:hover img {
+  filter: brightness(1.04) contrast(1.04) !important;
+}
+
+/* ==========================================
+   7. تنسيق البطاقات والمودالات وحقول الإدخال
+   ========================================== */
+
+[data-theme='light'] .product-card,
+[data-theme='light'] .dish-card,
+[data-theme='light'] .contact-info-card,
+[data-theme='light'] .contact-form-card,
+[data-theme='light'] .cart-modal-content,
+[data-theme='light'] .toast {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(224, 122, 40, 0.25) !important;
+  box-shadow: 0 10px 25px rgba(18, 10, 5, 0.06) !important;
+}
+
+[data-theme='light'] .product-card:hover,
+[data-theme='light'] .dish-card:hover {
+  border-color: #E07A28 !important;
+  box-shadow: 0 12px 30px rgba(224, 122, 40, 0.2) !important;
+}
+
+[data-theme='light'] .form-input,
+[data-theme='light'] select.form-input,
+[data-theme='light'] textarea.form-input {
+  background: #FAF6F0 !important;
+  color: #120A05 !important;
+  border: 1px solid rgba(224, 122, 40, 0.3) !important;
+}
+
+/* ==========================================
+   8. الأزرار والعناصر البرتقالية النحاسية
+   ========================================== */
+
+[data-theme='light'] .btn-primary,
+[data-theme='light'] .btn-submit,
+[data-theme='light'] .highlight-btn,
+[data-theme='light'] .card-btn {
+  color: #E07A28 !important;
+}
+
+[data-theme='light'] .btn-primary,
+[data-theme='light'] .btn-submit {
+  background: #E07A28 !important;
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+
+[data-theme='light'] .products-tag {
+  color: #E07A28 !important;
+}
+/* ==========================================
+   ضبط ألوان أسعار الأصناف (أعلى اليسار وأسفل اليمين)
+   ========================================== */
+
+/* 1. السعر المتموضع أعلى يسار الكارد (أبيض ناصع) */
+[data-theme='light'] .product-card .price-top-left,
+[data-theme='light'] .dish-card .price-top-left,
+[data-theme='light'] .card-price-top,
+[data-theme='light'] .price-badge,
+[data-theme='light'] .product-card [class*="top"] [class*="price"],
+[data-theme='light'] .dish-card [class*="top"] [class*="price"] {
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 2. السعر المتموضع أسفل يمين الكارد (أسود داكن) */
+[data-theme='light'] .product-card .price-bottom-right,
+[data-theme='light'] .dish-card .price-bottom-right,
+[data-theme='light'] .card-price-bottom,
+[data-theme='light'] .dish-price,
+[data-theme='light'] .card-content .dish-price,
+[data-theme='light'] .product-card [class*="bottom"] [class*="price"],
+[data-theme='light'] .dish-card [class*="bottom"] [class*="price"] {
+  color: #120A05 !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+/* ==========================================
+   رقم سلة المشتريات باللون الأبيض عند الهوفر في الوضع النهاري
+   ========================================== */
+
+[data-theme='light'] .cart-icon-container:hover .cart-badge,
+[data-theme='light'] .cart-button:hover .cart-count,
+[data-theme='light'] .cart-btn:hover span,
+[data-theme='light'] button[aria-label*="cart"]:hover *,
+[data-theme='light'] .cart-icon-wrapper:hover [class*="badge"],
+[data-theme='light'] [class*="cart"]:hover [class*="badge"],
+[data-theme='light'] [class*="cart"]:hover [class*="count"] {
+  color: #FFFFFF !important;
+}
+/* ==========================================
+   إضافة بوردر متناسق لعناصر النافبار في الوضع النهاري
+   ========================================== */
+
+[data-theme='light'] .navbar a:not(.btn):not(.active),
+[data-theme='light'] .nav-links a:not(.btn):not(.active),
+[data-theme='light'] .navbar button:not(.btn),
+[data-theme='light'] .nav-link:not(.btn) {
+  border: 1px solid rgba(224, 122, 40, 0.35) !important;
+  border-radius: 8px !important;
+  padding: 6px 14px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* إبراز البوردر وتغميقه عند تمرير الماوس (Hover) */
+[data-theme='light'] .navbar a:not(.btn):not(.active):hover,
+[data-theme='light'] .nav-links a:not(.btn):not(.active):hover,
+[data-theme='light'] .navbar button:not(.btn):hover,
+[data-theme='light'] .nav-link:not(.btn):hover {
+  border-color: #E07A28 !important;
+  background-color: rgba(224, 122, 40, 0.08) !important;
+}
+/* ==========================================
+   تثبيت خلفية النافبار والأزرار عند الهوفر في الوضع النهاري
+   ========================================== */
+
+[data-theme='light'] .navbar a:hover,
+[data-theme='light'] .nav-links a:hover,
+[data-theme='light'] .navbar button:hover,
+[data-theme='light'] .nav-link:hover,
+[data-theme='light'] .navbar .nav-item:hover {
+  background-color: #E07A28 !important;
+  color: #FFFFFF !important;
+  border-color: #E07A28 !important;
+  box-shadow: 0 4px 12px rgba(224, 122, 40, 0.3) !important;
+}
+/* ==========================================
+   العبارة فوق زر الدخول بالوضع النهاري: أبيض بتوهج برتقالي
+   ========================================== */
+
+[data-theme='light'] .hero-subtitle,
+[data-theme='light'] .hero-description,
+[data-theme='light'] .hero-text-container p,
+[data-theme='light'] .hero-content p,
+[data-theme='light'] .hero-section p {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  /* توهج وضياء برتقالي نحاسي دافئ لضمان وضوحها فوق الخلفية */
+  text-shadow: 
+    0 0 4px #E07A28,
+    0 0 10px rgba(224, 122, 40, 0.8),
+    0 2px 5px rgba(0, 0, 0, 0.6) !important;
+}
+/* ==========================================
+   إجبار تلوين عبارات "تجربة مخملية" و"جودة فاخرة" بالأبيض والمتوهج
+   ========================================== */
+
+[data-theme='light'] .about-section [class*="card"] p,
+[data-theme='light'] .about-page [class*="card"] p,
+[data-theme='light'] [class*="about"] [class*="card"] *,
+[data-theme='light'] .features-card *,
+[data-theme='light'] .about-feature * {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  text-shadow: 
+    0 0 4px #E07A28,
+    0 0 10px rgba(224, 122, 40, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.8) !important;
+}
+/* ==========================================
+   تنسيق النافبار الذكي (شفاف بالـ Hero وعاجي مزخرف بالسكرول)
+   ========================================== */
+
+/* 1. الحالة الافتراضية للنافبار أعلى الصفحة الرئيسية (شفافية كاملة بمرونة عالية) */
+html[data-theme='light'] header,
+html[data-theme='light'] nav,
+html[data-theme='light'] .navbar {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-bottom: 1px solid rgba(224, 122, 40, 0.15) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(0px) !important;
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease !important;
+}
+
+/* 2. تحول النافبار للون العاجي المزخرف فور التمرير (Scroll > 100px) للوصول إلى قسم عن مانديلا */
+html[data-theme='light'] header.scrolled,
+html[data-theme='light'] nav.scrolled,
+html[data-theme='light'] .navbar.scrolled,
+html[data-theme='light'] [class*="scrolled"] {
+  background-color: rgba(250, 246, 240, 0.96) !important;
+  /* زخرفة أرابيسك ناعمة بدمج متناسق مع اللون العاجي */
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d16a1b' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M30 30L15 0H0v15l30 30 30-30V0H45L30 30zM0 45v15h15l15-15L15 30 0 45zm60 0L45 30 30 45l15 15h15V45z'/%3E%3C/g%3E%3C/svg%3E") !important;
+  background-repeat: repeat !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(224, 122, 40, 0.3) !important;
+  box-shadow: 0 4px 20px rgba(18, 10, 5, 0.08) !important;
+}
+
+/* 3. ضمان حماية اسم المطعم "مانديلا" (اللوغو) من التشوه في الشفافية والسكرول */
+html[data-theme='light'] .navbar .logo,
+html[data-theme='light'] .navbar .brand-name,
+html[data-theme='light'] .navbar [class*="logo"],
+html[data-theme='light'] .navbar [class*="brand"] {
+  color: #120A05 !important;
+  background: transparent !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #120A05 !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 3px #E07A28, 0 0 8px rgba(224, 122, 40, 0.5) !important;
+  transition: text-shadow 0.3s ease !important;
+}
+
+/* 4. إزالة الشفافيات المشوهة من الخلفيات الداخلية لعناصر القائمة والروابط */
+html[data-theme='light'] .navbar a,
+html[data-theme='light'] .navbar button,
+html[data-theme='light'] .nav-link {
+  background-color: transparent;
+  color: #120A05 !important;
+}
+
+/* 5. تأثير الهوفر الأنيق لعناصر القائمة */
+html[data-theme='light'] .navbar a:hover,
+html[data-theme='light'] .navbar button:hover,
+html[data-theme='light'] .nav-link:hover {
+  background-color: #E07A28 !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+  border-color: #E07A28 !important;
+  box-shadow: 0 2px 10px rgba(224, 122, 40, 0.3) !important;
+}
+/* ==========================================
+   تلوين خلفية وإطار حرف الـ M فقط بجانب اسم المطعم
+   ========================================== */
+
+/* استهداف عنصر الحرف M بدقة عالية */
+[data-theme='light'] .navbar .logo-icon,
+[data-theme='light'] .navbar .logo-symbol,
+[data-theme='light'] .navbar .brand-icon,
+[data-theme='light'] .navbar .logo-avatar,
+[data-theme='light'] .navbar [class*="logo"] > span:first-child,
+[data-theme='light'] .navbar [class*="brand"] > span:first-child {
+  background-color: #E07A28 !important;   /* خلفية برتقالية نحاسية */
+  color: #FFFFFF !important;               /* حرف M بالأبيض الناصع */
+  border: 1.5px solid #E07A28 !important;   /* بوردر برتقالي متناسق */
+  border-radius: 8px !important;           /* زوايا منحنية أنيقة */
+  width: 36px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(224, 122, 40, 0.35) !important;
+}
+
+/* إلغاء الخلفيات والبوردر عن النص والعبارة التوضيحية أسفل/جانب اللوغو */
+[data-theme='light'] .navbar .logo-text,
+[data-theme='light'] .navbar .brand-text,
+[data-theme='light'] .navbar .logo-subtitle,
+[data-theme='light'] .navbar [class*="logo"] p,
+[data-theme='light'] .navbar [class*="brand"] p,
+[data-theme='light'] .navbar [class*="logo"] span:not(:first-child) {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+/* ==========================================
+   إخفاء السعر العلوي فقط في كاردات الحلويات
+   ========================================== */
+
+/* 1. إخفاء أي عنصر سعر متموضع في النصف العلوي أو زاوية الكارد العلوية */
+[data-theme='light'] [class*="sweet"] .product-card > span:first-child,
+[data-theme='light'] [class*="sweet"] .dish-card > span:first-child,
+[data-theme='light'] [class*="dessert"] .product-card > span:first-child,
+[data-theme='light'] [class*="sweet"] [class*="badge"],
+[data-theme='light'] [class*="dessert"] [class*="badge"],
+[data-theme='light'] [class*="sweet"] [class*="price-top"],
+[data-theme='light'] [class*="dessert"] [class*="price-top"],
+[data-theme='light'] [class*="sweet"] .top-4,
+[data-theme='light'] [class*="dessert"] .top-4 {
+  display: none !important;
+}
+
+/* 2. الحفاظ على السعر السفلي بارزاً باللون الأسود الملكي */
+[data-theme='light'] [class*="sweet"] .product-card [class*="price"]:not(:first-child),
+[data-theme='light'] [class*="dessert"] .product-card [class*="price"]:not(:first-child),
+[data-theme='light'] [class*="sweet"] [class*="bottom"] [class*="price"],
+[data-theme='light'] [class*="dessert"] [class*="bottom"] [class*="price"] {
+  display: block !important;
+  color: #120A05 !important;
+  font-weight: 800 !important;
+}
+/* ==========================================
+   جعل زر التكبير داخل الكارد باللون الأبيض بالوضع النهاري
+   ========================================== */
+
+/* استهداف زر التكبير والأيقونة بداخله */
+[data-theme='light'] .product-card .zoom-btn,
+[data-theme='light'] .product-card .expand-btn,
+[data-theme='light'] .product-card [class*="zoom"],
+[data-theme='light'] .product-card [class*="expand"],
+[data-theme='light'] .dish-card [class*="zoom"],
+[data-theme='light'] .dish-card [class*="expand"],
+[data-theme='light'] .product-card button[aria-label*="zoom"],
+[data-theme='light'] .product-card button[aria-label*="expand"],
+[data-theme='light'] .product-card button[title*="تكبير"] {
+  color: #FFFFFF !important;
+  background-color: rgba(224, 122, 40, 0.85) !important; /* خلفية برتقالية نحاسية لضمان التباين */
+  border-color: #E07A28 !important;
+}
+
+/* التأكد من تلوين أيقونة SVG أو FontAwesome بالداخل بالأبيض */
+[data-theme='light'] .product-card [class*="zoom"] svg,
+[data-theme='light'] .product-card [class*="expand"] svg,
+[data-theme='light'] .product-card [class*="zoom"] i,
+[data-theme='light'] .product-card [class*="expand"] i {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+/* ==========================================
+   تأثير الهوفر لعناصر النافبار: أبيض بتوهج ذهبي غامق
+   ========================================== */
+
+html[data-theme='light'] .navbar a:hover,
+html[data-theme='light'] .navbar button:hover,
+html[data-theme='light'] .nav-link:hover,
+html[data-theme='light'] header a:hover,
+html[data-theme='light'] header button:hover {
+  background-color: transparent !important; /* إبقاء الخلفية شفافة وأنيقة */
+  color: #FFFFFF !important;               /* النص باللون الأبيض الناصع */
+  text-shadow: 
+    0 0 4px #B8860B,                       /* ذهبي غامق (Dark Goldenrod) */
+    0 0 10px #B8860B, 
+    0 0 18px rgba(184, 134, 11, 0.8) !important;
+  border-color: #B8860B !important;
+  transition: all 0.3s ease !important;
+}
+/* ==========================================
+   خلفية عاجية لحقول الإدخال في صفحة تواصل معنا (الوضع النهاري)
+   ========================================== */
+
+/* 1. استهداف حقول الإدخال ومربعات النص والخيارات في صفحة التواصل */
+[data-theme='light'] .contact-page input,
+[data-theme='light'] .contact-page textarea,
+[data-theme='light'] .contact-page select,
+[data-theme='light'] .contact-section input,
+[data-theme='light'] .contact-section textarea,
+[data-theme='light'] .contact-section select,
+[data-theme='light'] [class*="contact"] input,
+[data-theme='light'] [class*="contact"] textarea,
+[data-theme='light'] [class*="contact"] select,
+[data-theme='light'] [class*="contact"] form input,
+[data-theme='light'] [class*="contact"] form textarea {
+  background-color: #FAF6F0 !important; /* اللون العاجي الفاخر */
+  color: #120A05 !important;            /* نص داكن للوضوح العالي */
+  border: 1px solid rgba(224, 122, 40, 0.3) !important; /* حدود نحاسية خفيفة */
+  box-shadow: inset 0 1px 3px rgba(18, 10, 5, 0.05) !important;
+}
+
+/* 2. تحسين مظهر الحقل عند التركيز والتأشير عليه (Focus / Active) */
+[data-theme='light'] [class*="contact"] input:focus,
+[data-theme='light'] [class*="contact"] textarea:focus,
+[data-theme='light'] [class*="contact"] select:focus {
+  background-color: #FFFFFF !important; /* يتحول لأبيض ناصع عند الكتابة */
+  border-color: #E07A28 !important;     /* إطار برتقالي نحاسي متوهج */
+  box-shadow: 0 0 8px rgba(224, 122, 40, 0.25) !important;
+  outline: none !important;
+}
+
+/* 3. تلوين نص التوضيح الضمني (Placeholder) بلون مناسب ومتناسق */
+[data-theme='light'] [class*="contact"] input::placeholder,
+[data-theme='light'] [class*="contact"] textarea::placeholder {
+  color: rgba(18, 10, 5, 0.5) !important;
+}
+/* ==========================================
+   خلفية بيضاء مؤكدة لعناصر الاتصال والواتساب (wa.me) والبريد
+   ========================================== */
+
+html[data-theme='light'] a[href^="tel"],
+html[data-theme='light'] a[href*="wa.me"],
+html[data-theme='light'] a[href*="whatsapp"],
+html[data-theme='light'] a[href^="mailto"],
+html[data-theme='light'] [class*="whatsapp"],
+html[data-theme='light'] [class*="phone"],
+html[data-theme='light'] [class*="email"],
+html[data-theme='light'] [class*="contact-card"],
+html[data-theme='light'] [class*="info-card"] {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #120A05 !important;
+  border: 1px solid rgba(224, 122, 40, 0.35) !important;
+  box-shadow: 0 4px 12px rgba(18, 10, 5, 0.06) !important;
+}
+
+/* ضمان أن النصوص والأيقونات داخل بطاقات الاتصال والواتساب واضحة ومرئية */
+html[data-theme='light'] a[href*="wa.me"] *,
+html[data-theme='light'] a[href*="whatsapp"] *,
+html[data-theme='light'] a[href^="tel"] *,
+html[data-theme='light'] a[href^="mailto"] *,
+html[data-theme='light'] [class*="whatsapp"] *,
+html[data-theme='light'] [class*="phone"] *,
+html[data-theme='light'] [class*="email"] * {
+  color: #120A05 !important;
+}
+
+/* تلوين أيقونات التواصل باللون النحاسي البرتقالي الجذاب */
+html[data-theme='light'] a[href*="wa.me"] svg,
+html[data-theme='light'] a[href*="whatsapp"] svg,
+html[data-theme='light'] a[href^="tel"] svg,
+html[data-theme='light'] a[href^="mailto"] svg {
+  color: #E07A28 !important;
+  fill: #E07A28 !important;
+}
+/* ==========================================
+   إجبار نص وساعات الاستقبال بالكامل على الأسود المتوهج (تجاوز Tailwind)
+   ========================================== */
+
+html[data-theme='light'] [class*="hours"] *,
+html[data-theme='light'] [class*="schedule"] *,
+html[data-theme='light'] [class*="timing"] *,
+html[data-theme='light'] [class*="time"] * {
+  color: #120A05 !important;
+  opacity: 1 !important;
+  text-shadow: 
+    0 0 2px rgba(18, 10, 5, 0.4),
+    0 0 8px rgba(18, 10, 5, 0.25) !important;
+}
+/* ==========================================
+   التحكم بظل وخط النافبار في الوضع النهاري
+   ========================================== */
+
+/* 1. إخفاء الظل والحد السكني/البرتقالي تماماً عندما نكون في أعلى الصفحة */
+html[data-theme='light'] .navbar:not(.navbar-scrolled) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid transparent !important;
+}
+
+/* 2. ظهور الخلفية العاجية مع الخط الخفيف والظل الأنيق فور السكرول لتحت */
+html[data-theme='light'] .navbar.navbar-scrolled {
+  background-color: #FAF6F0 !important;
+  border-bottom: 1px solid rgba(224, 122, 40, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(18, 10, 5, 0.08) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+/* ==========================================
+   ضبط كاردات الأصناف (أقرب للمربع وبدون مسافات زائدة)
+   ========================================== */
+
+/* 1. تقليل الارتفاع الإجمالي للبطاقة لشد المحتوى */
+[class*="product-card"],
+[class*="menu-card"],
+[class*="item-card"],
+[class*="dish-card"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  min-height: 350px !important; /* ارتفاع مدمج يناسب الشكل المربّع */
+  justify-content: flex-start !important;
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+}
+
+/* 2. الارتفاع المباشر للصور */
+[class*="product-card"] img,
+[class*="menu-card"] img,
+[class*="item-card"] img,
+[class*="dish-card"] img,
+[class*="card-image"] {
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: cover !important;
+}
+
+/* 3. إلغاء الحشو السكني/الزائد من الأسفل وتقريب العناصر */
+[class*="card-content"],
+[class*="card-body"],
+[class*="product-info"] {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+  justify-content: space-between !important;
+  padding: 0.85rem 1rem 0.85rem 1rem !important; /* تقليل البادينغ السفلي */
+}
+
+/* 4. إلغاء أي مارجن سفلي لسطر السعر وزر إضافة السلة */
+[class*="card-content"] > div:last-child,
+[class*="card-body"] > div:last-child,
+[class*="card-footer"] {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+/* ==========================================
+   تنسيق اسم الصنف وزر الإغلاق (✕) باللون الذهبي وبدون خلفية
+   ========================================== */
+
+/* 1. اسم الصنف باللون الذهبي الفاخر للهوية البصرية */
+html[data-theme='light'] [class*="modal"] h2,
+html[data-theme='light'] [class*="modal"] h3,
+html[data-theme='light'] [class*="lightbox"] h2,
+html[data-theme='light'] [class*="lightbox"] h3,
+html[data-theme='light'] [class*="modal"] [class*="title"],
+html[data-theme='light'] [class*="image"] [class*="title"] {
+  color: #B8860B !important; /* اللون الذهبي المعتمد */
+  font-weight: 700 !important;
+}
+
+/* 2. زر الإغلاق (✕) باللون الذهبي وبدون أي خلفية أو حدود */
+html[data-theme='light'] [class*="modal"] button[class*="close"],
+html[data-theme='light'] [class*="lightbox"] button[class*="close"],
+html[data-theme='light'] [class*="modal"] [class*="close-btn"],
+html[data-theme='light'] [class*="lightbox"] [class*="close-btn"],
+html[data-theme='light'] button[aria-label*="close"],
+html[data-theme='light'] button[aria-label*="إغلاق"] {
+  color: #B8860B !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+/* تأثير خفيف عند المرور بالماوس فوق علامة الإغلاق */
+html[data-theme='light'] [class*="modal"] button[class*="close"]:hover,
+html[data-theme='light'] [class*="lightbox"] button[class*="close"]:hover,
+html[data-theme='light'] button[aria-label*="close"]:hover,
+html[data-theme='light'] button[aria-label*="إغلاق"]:hover {
+  color: #E07A28 !important; /* درجة نحاسية متناسقة عند الهوفر */
+  opacity: 0.85 !important;
+}
+/* ==========================================
+   تأثير المكبر المباشر على الصور
+   ========================================== */
+
+/* 1. جعل كل العناصر الحاوية للصور ذات موضع نسبياً */
+.card-img-container,
+[class*="card"] img,
+[class*="item"] img,
+[class*="product"] img {
+  cursor: pointer !important;
+}
+
+/* 2. تكبير الصورة عند الهوفر وتعتيمها قليلاً */
+[class*="card"]:hover img,
+[class*="item"]:hover img,
+[class*="product"]:hover img {
+  transform: scale(1.08) !important;
+  filter: brightness(0.85) !important;
+  transition: all 0.3s ease !important;
+}
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+/* ضبط القائمة الجانبية لضمان ظهورها بشكل ممتاز على الموبايل */
+.mobile-menu-drawer,
+.drawer-content {
+  width: 75vw !important; /* نسبة مناسبة لشاشات الموبايل (أو استخدمي max-width لضبط العرض) */
+  max-width: 280px !important;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0; /* أو left: 0 حسب اتجاه ظهور القائمة لديكِ */
+  z-index: 9999 !important; /* لضمان ظهورها فوق كافة عناصر الصفحة */
+  background-color: #120A05 !important;
+  border-left: 1px solid rgba(224, 122, 40, 0.4) !important;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+}
+/* =========================================================
+   تنسيق الإشعار (Toast) بخلفية سوداء ونص أبيض متوهج بالوضع النهاري
+   ========================================================= */
+.light-theme .toast-notification,
+.light-theme .toast {
+  background-color: #120A05 !important; /* خلفية سوداء دافئة متناسقة مع هوية مانديلا */
+  color: #FFFFFF !important;            /* نص أبيض ناصع */
+  border: 1px solid rgba(224, 122, 40, 0.6) !important; /* إطار نحاسي برتقالي أنيق */
+  box-shadow: 0 0 15px rgba(224, 122, 40, 0.4), 
+              0 4px 20px rgba(0, 0, 0, 0.5) !important; /* تأثير توهج ناعم وجذاب */
+}
+/* استهداف الثيم الفاتح بالطريقة الصحيحة المعتمدة في المشروع [data-theme="light"] */
+[data-theme="light"] .toast-notification,
+[data-theme="light"] .toast,
+[data-theme="light"] [class*="toast"] {
+  background-color: #120A05 !important;
+  color: #FFFFFF !important;border-radius: 5px;
+}
+
+/* لضمان تحول لون النص وكل العناصر الداخلية للأبيض المتوهج بالوضع النهاري */
+[data-theme="light"] .toast-notification *,
+[data-theme="light"] .toast *,
+[data-theme="light"] [class*="toast"] * {
+  color: #FFFFFF !important;
+}
